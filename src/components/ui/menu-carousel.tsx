@@ -1,0 +1,73 @@
+import React from 'react';
+import { Card } from './card';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from './carousel';
+
+interface MenuItem {
+  id: string;
+  name: string;
+  image: string;
+  category: 'Burgers' | 'Pizzas' | 'Traditional Meals';
+}
+
+const menuItems: MenuItem[] = [
+  // Burgers
+  { id: '1', name: 'Signature Wagyu Burger', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop', category: 'Burgers' },
+  { id: '2', name: 'Truffle Mushroom Burger', image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop', category: 'Burgers' },
+  { id: '3', name: 'Gourmet Chicken Burger', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=400&h=300&fit=crop', category: 'Burgers' },
+  
+  // Pizzas
+  { id: '4', name: 'Artisan Margherita', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop', category: 'Pizzas' },
+  { id: '5', name: 'Truffle & Prosciutto', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop', category: 'Pizzas' },
+  { id: '6', name: 'Mediterranean Delight', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop', category: 'Pizzas' },
+  
+  // Traditional Meals
+  { id: '7', name: 'Pan-Seared Salmon', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop', category: 'Traditional Meals' },
+  { id: '8', name: 'Beef Wellington', image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop', category: 'Traditional Meals' },
+  { id: '9', name: 'Roasted Duck Confit', image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&h=300&fit=crop', category: 'Traditional Meals' },
+];
+
+interface MenuCarouselProps {
+  category: 'Burgers' | 'Pizzas' | 'Traditional Meals';
+}
+
+const MenuCarousel: React.FC<MenuCarouselProps> = ({ category }) => {
+  const categoryItems = menuItems.filter(item => item.category === category);
+
+  return (
+    <div className="w-full max-w-6xl mx-auto px-4">
+      <Carousel className="w-full">
+        <CarouselContent className="-ml-2 md:-ml-4">
+          {categoryItems.map((item) => (
+            <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+              <Card className="elegant-card overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300">
+                <div className="relative">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-48 sm:h-52 lg:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-white font-elegant font-semibold text-lg lg:text-xl leading-tight">
+                      {item.name}
+                    </h3>
+                  </div>
+                </div>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex -left-6 bg-primary/20 border-primary/30 hover:bg-primary/30" />
+        <CarouselNext className="hidden sm:flex -right-6 bg-primary/20 border-primary/30 hover:bg-primary/30" />
+      </Carousel>
+    </div>
+  );
+};
+
+export default MenuCarousel;
