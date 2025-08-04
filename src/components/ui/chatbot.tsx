@@ -76,20 +76,25 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 animate-fade-in">
+    <div className="fixed bottom-8 right-8 z-50">
       {/* Chat Window */}
-      <div className={`transition-all duration-500 ease-out ${isOpen ? 'opacity-100 visible translate-y-0 scale-100' : 'opacity-0 invisible translate-y-8 scale-95'}`}>
-        <Card className="w-80 h-96 mb-4 elegant-card overflow-hidden shadow-2xl border-primary/20">
+      <div className={`absolute bottom-16 right-0 transition-all duration-300 ease-out ${isOpen ? 'opacity-100 visible translate-y-0 scale-100' : 'opacity-0 invisible translate-y-4 scale-95 pointer-events-none'}`}>
+        <Card className="w-96 h-[500px] elegant-card overflow-hidden shadow-2xl border-primary/20 bg-background/95 backdrop-blur-lg">
           <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="p-4 border-b border-border/20 bg-primary/10">
+            <div className="p-4 border-b border-border/10 bg-gradient-to-r from-primary/10 to-primary/5">
               <div className="flex items-center justify-between">
-                <h3 className="font-elegant font-semibold text-foreground">Mafi Restaurant Assistant</h3>
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                    <MessageCircle className="h-4 w-4 text-primary" />
+                  </div>
+                  <h3 className="font-elegant font-semibold text-foreground">Restaurant Assistant</h3>
+                </div>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsOpen(false)}
-                  className="h-8 w-8 p-0 hover:bg-primary/20"
+                  className="h-8 w-8 p-0 hover:bg-primary/10 rounded-full"
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -97,17 +102,17 @@ const Chatbot = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-3">
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-gradient-to-b from-background/50 to-background/80">
               {messages.map((message) => (
                 <div
                   key={message.id}
                   className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-xs p-3 rounded-lg text-sm ${
+                    className={`max-w-[280px] p-3 rounded-2xl text-sm leading-relaxed shadow-sm ${
                       message.isUser
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-secondary text-secondary-foreground'
+                        ? 'bg-primary text-primary-foreground rounded-br-md'
+                        : 'bg-secondary/80 text-secondary-foreground rounded-bl-md border border-border/20'
                     }`}
                   >
                     {message.text}
@@ -117,20 +122,20 @@ const Chatbot = () => {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-border/20">
-              <div className="flex space-x-2">
+            <div className="p-4 border-t border-border/10 bg-background/90">
+              <div className="flex space-x-3">
                 <input
                   type="text"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Type your message here..."
-                  className="flex-1 px-3 py-2 bg-input border border-border/20 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  placeholder="Ask me anything about our restaurant..."
+                  className="flex-1 px-4 py-3 bg-input/50 border border-border/20 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all duration-200"
                 />
                 <Button
                   onClick={handleSendMessage}
                   size="sm"
-                  className="gold-button h-10 w-10 p-0"
+                  className="gold-button h-12 w-12 rounded-full p-0 shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   <Send className="h-4 w-4" />
                 </Button>
@@ -140,12 +145,12 @@ const Chatbot = () => {
         </Card>
       </div>
 
-      {/* Floating Button - Fixed Position */}
+      {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="gold-button h-14 w-14 rounded-full shadow-lg"
+        className="gold-button h-16 w-16 rounded-full shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-105"
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-7 w-7" />
       </Button>
     </div>
   );

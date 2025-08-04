@@ -127,50 +127,19 @@ const BookingForm: React.FC<BookingFormProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2 text-foreground">
-                  <Calendar className="inline w-4 h-4 mr-2" />
-                  Event Date
-                </label>
-                <Input
-                  type="date"
-                  name="eventDate"
-                  value={formData.eventDate}
-                  onChange={handleInputChange}
-                  required
-                  className="elegant-input"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-foreground">
-                  <Clock className="inline w-4 h-4 mr-2" />
-                  Start Time
-                </label>
-                <Input
-                  type="time"
-                  name="startTime"
-                  value={formData.startTime}
-                  onChange={handleInputChange}
-                  required
-                  className="elegant-input"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-foreground">
-                  End Time
-                </label>
-                <Input
-                  type="time"
-                  name="endTime"
-                  value={formData.endTime}
-                  onChange={handleInputChange}
-                  required
-                  className="elegant-input"
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium mb-2 text-foreground">
+                <Calendar className="inline w-4 h-4 mr-2" />
+                Event Date
+              </label>
+              <Input
+                type="date"
+                name="eventDate"
+                value={formData.eventDate}
+                onChange={handleInputChange}
+                required
+                className="elegant-input"
+              />
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">

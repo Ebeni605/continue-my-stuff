@@ -58,8 +58,8 @@ const MenuCarousel: React.FC<MenuCarouselProps> = ({ category }) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden sm:flex -left-6 bg-primary/20 border-primary/30 hover:bg-primary/30" />
-        <CarouselNext className="hidden sm:flex -right-6 bg-primary/20 border-primary/30 hover:bg-primary/30" />
+        <CarouselPrevious className="hidden sm:flex absolute bottom-4 left-4 z-10 bg-primary/90 border-primary/30 hover:bg-primary text-primary-foreground" />
+        <CarouselNext className="hidden sm:flex absolute bottom-4 right-4 z-10 bg-primary/90 border-primary/30 hover:bg-primary text-primary-foreground" />
       </Carousel>
     </div>
   );
