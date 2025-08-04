@@ -73,7 +73,8 @@ const Chatbot = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      {isOpen && (
+      {/* Chat Window */}
+      <div className={`transition-all duration-300 ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'}`}>
         <Card className="w-80 h-96 mb-4 elegant-card overflow-hidden">
           <div className="flex flex-col h-full">
             {/* Header */}
@@ -133,9 +134,9 @@ const Chatbot = () => {
             </div>
           </div>
         </Card>
-      )}
+      </div>
 
-      {/* Floating Button */}
+      {/* Floating Button - Fixed Position */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
         className="gold-button h-14 w-14 rounded-full shadow-lg"

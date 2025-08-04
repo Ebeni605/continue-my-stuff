@@ -55,7 +55,7 @@ const MenuCarousel: React.FC<MenuCarouselProps> = ({ category }) => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-48 sm:h-52 lg:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-64 sm:h-72 lg:h-80 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">

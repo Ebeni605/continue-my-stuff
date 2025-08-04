@@ -140,12 +140,14 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-elegant font-bold text-foreground mb-8">
               About Our Restaurant
             </h2>
-            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
-              At our restaurant, we believe that dining is more than just a meal—it's an experience that engages all your senses. 
-              Our vision is to create an elegant atmosphere where culinary artistry meets exceptional service, offering our guests 
-              a sophisticated dining experience that celebrates the finest flavors and ingredients. From our carefully curated menu 
-              to our warm, inviting ambiance, every detail is designed to elevate your dining experience and create lasting memories.
-            </p>
+            <Card className="elegant-card p-8 md:p-12">
+              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
+                At our restaurant, we believe that dining is more than just a meal—it's an experience that engages all your senses. 
+                Our vision is to create an elegant atmosphere where culinary artistry meets exceptional service, offering our guests 
+                a sophisticated dining experience that celebrates the finest flavors and ingredients. From our carefully curated menu 
+                to our warm, inviting ambiance, every detail is designed to elevate your dining experience and create lasting memories.
+              </p>
+            </Card>
           </div>
         </div>
       </section>
@@ -213,7 +215,7 @@ const Index = () => {
               Contact Us
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="grid md:grid-cols-2 gap-8">
               <Card className="elegant-card p-8">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-elegant font-semibold mb-2">Phone</h3>
@@ -226,20 +228,91 @@ const Index = () => {
                 <p className="text-foreground/70">info@mafirestaurant.com</p>
               </Card>
             </div>
-            
-            <div className="text-center">
-              <Button
-                onClick={openGoogleMaps}
-                className="gold-button text-lg px-8 py-3 h-auto"
-              >
-                <MapPin className="mr-2 h-5 w-5" />
-                View Location on Map
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Professional Footer */}
+      <footer className="bg-background border-t border-border/20 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+              
+              {/* Restaurant Info */}
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <img 
+                    src="/lovable-uploads/7a8952e4-a27a-4e0e-bd3a-e43bf7afab8e.png" 
+                    alt="Mafi Restaurant Logo" 
+                    className="w-10 h-10 object-contain"
+                  />
+                  <span className="ml-3 text-xl font-elegant font-bold text-foreground">Mafi Restaurant</span>
+                </div>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  Experience culinary excellence in every bite. Where tradition meets innovation.
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-elegant font-semibold text-foreground">Quick Links</h4>
+                <div className="space-y-2">
+                  {[
+                    { label: 'Home', id: 'home' },
+                    { label: 'Menu', id: 'menu' },
+                    { label: 'About', id: 'about' },
+                    { label: 'Meeting Hall', id: 'meeting' }
+                  ].map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="block text-foreground/70 hover:text-primary transition-colors duration-200 text-sm"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-elegant font-semibold text-foreground">Contact</h4>
+                <div className="space-y-2">
+                  <div className="flex items-center text-foreground/70 text-sm">
+                    <Phone className="w-4 h-4 text-primary mr-2" />
+                    <span>+1 (555) 123-4567</span>
+                  </div>
+                  <div className="flex items-center text-foreground/70 text-sm">
+                    <Mail className="w-4 h-4 text-primary mr-2" />
+                    <span>info@mafirestaurant.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-elegant font-semibold text-foreground">Location</h4>
+                <Button
+                  onClick={openGoogleMaps}
+                  className="gold-button w-full"
+                >
+                  <MapPin className="mr-2 h-4 w-4" />
+                  View on Map
+                  <ExternalLink className="ml-2 h-3 w-3" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Bottom Footer */}
+            <div className="border-t border-border/20 pt-8 mt-12">
+              <div className="flex flex-col md:flex-row items-center justify-between text-sm text-foreground/60">
+                <p>&copy; 2024 Mafi Restaurant. All rights reserved.</p>
+                <p className="mt-2 md:mt-0">Designed with excellence in mind</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Chatbot */}
       <Chatbot />
