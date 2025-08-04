@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, ExternalLink, Users, Calendar } from 'lucide-react';
 import MenuCarousel from '@/components/ui/menu-carousel';
 import Chatbot from '@/components/ui/chatbot';
+import BookingForm from '@/components/ui/booking-form';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -29,10 +31,14 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-elegant font-bold text-xl">R</span>
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/7a8952e4-a27a-4e0e-bd3a-e43bf7afab8e.png" 
+                  alt="Mafi Restaurant Logo" 
+                  className="w-12 h-12 object-contain"
+                />
               </div>
-              <span className="ml-3 text-2xl font-elegant font-bold text-foreground">Restaurant</span>
+              <span className="ml-3 text-2xl font-elegant font-bold text-foreground">Mafi Restaurant</span>
             </div>
 
             {/* Navigation */}
@@ -41,7 +47,7 @@ const Index = () => {
                 { label: 'Home', id: 'home' },
                 { label: 'Menu', id: 'menu' },
                 { label: 'About', id: 'about' },
-                { label: 'Location', id: 'location' },
+                { label: 'Meeting Hall', id: 'meeting' },
                 { label: 'Contact', id: 'contact' }
               ].map((item) => (
                 <button
@@ -79,12 +85,10 @@ const Index = () => {
             Experience culinary excellence in every bite
           </p>
           <Button
-            onClick={openGoogleMaps}
+            onClick={() => scrollToSection('menu')}
             className="gold-button text-lg px-8 py-3 h-auto"
           >
-            <MapPin className="mr-2 h-5 w-5" />
-            View Location
-            <ExternalLink className="ml-2 h-4 w-4" />
+            Explore Our Menu
           </Button>
         </div>
       </section>
@@ -101,18 +105,22 @@ const Index = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="burgers" className="w-full">
+          <Tabs defaultValue="traditional" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-12 bg-secondary">
+              <TabsTrigger value="traditional" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Traditional Meals
+              </TabsTrigger>
               <TabsTrigger value="burgers" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 Burgers
               </TabsTrigger>
               <TabsTrigger value="pizzas" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 Pizzas
               </TabsTrigger>
-              <TabsTrigger value="traditional" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                Traditional Meals
-              </TabsTrigger>
             </TabsList>
+
+            <TabsContent value="traditional" className="mt-8">
+              <MenuCarousel category="Traditional Meals" />
+            </TabsContent>
 
             <TabsContent value="burgers" className="mt-8">
               <MenuCarousel category="Burgers" />
@@ -120,10 +128,6 @@ const Index = () => {
 
             <TabsContent value="pizzas" className="mt-8">
               <MenuCarousel category="Pizzas" />
-            </TabsContent>
-
-            <TabsContent value="traditional" className="mt-8">
-              <MenuCarousel category="Traditional Meals" />
             </TabsContent>
           </Tabs>
         </div>
@@ -146,24 +150,57 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Location Section */}
-      <section id="location" className="py-20 lg:py-32">
+      {/* Meeting Hall Section */}
+      <section id="meeting" className="py-20 lg:py-32">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-elegant font-bold text-foreground mb-8">
-              Visit Us
-            </h2>
-            <p className="text-xl text-foreground/70 mb-12 max-w-2xl mx-auto">
-              Find us in the heart of the city and experience exceptional dining
-            </p>
-            <Button
-              onClick={openGoogleMaps}
-              className="gold-button text-lg px-8 py-3 h-auto"
-            >
-              <MapPin className="mr-2 h-5 w-5" />
-              View on Map
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </Button>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-elegant font-bold text-foreground mb-8">
+                Meeting Hall
+              </h2>
+              <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+                Professional meeting spaces for corporate events, conferences, and special occasions
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <img 
+                  src="/lovable-uploads/4c789a5d-da1e-48a0-a78a-32757f79049d.png" 
+                  alt="Meeting Hall" 
+                  className="w-full h-80 object-cover rounded-lg shadow-elegant"
+                />
+              </div>
+              
+              <div className="space-y-6">
+                <h3 className="text-2xl font-elegant font-semibold text-foreground">
+                  State-of-the-Art Conference Facilities
+                </h3>
+                <p className="text-foreground/70 leading-relaxed">
+                  Our elegant meeting hall offers a sophisticated environment for your corporate events, 
+                  conferences, training sessions, and special gatherings. Equipped with modern technology 
+                  and professional amenities to ensure your event's success.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center text-foreground/70">
+                    <Users className="w-5 h-5 text-primary mr-3" />
+                    <span>Up to 50 people</span>
+                  </div>
+                  <div className="flex items-center text-foreground/70">
+                    <Calendar className="w-5 h-5 text-primary mr-3" />
+                    <span>Flexible scheduling</span>
+                  </div>
+                </div>
+                
+                <Button
+                  onClick={() => setIsBookingOpen(true)}
+                  className="gold-button text-lg px-8 py-3 h-auto"
+                >
+                  Book Meeting Hall
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -176,7 +213,7 @@ const Index = () => {
               Contact Us
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card className="elegant-card p-8">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-elegant font-semibold mb-2">Phone</h3>
@@ -186,8 +223,19 @@ const Index = () => {
               <Card className="elegant-card p-8">
                 <Mail className="h-8 w-8 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-elegant font-semibold mb-2">Email</h3>
-                <p className="text-foreground/70">info@restaurant.com</p>
+                <p className="text-foreground/70">info@mafirestaurant.com</p>
               </Card>
+            </div>
+            
+            <div className="text-center">
+              <Button
+                onClick={openGoogleMaps}
+                className="gold-button text-lg px-8 py-3 h-auto"
+              >
+                <MapPin className="mr-2 h-5 w-5" />
+                View Location on Map
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         </div>
@@ -195,6 +243,9 @@ const Index = () => {
 
       {/* Chatbot */}
       <Chatbot />
+      
+      {/* Booking Form Modal */}
+      <BookingForm isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 };

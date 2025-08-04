@@ -16,20 +16,25 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
+  // Traditional Meals
+  { id: '1', name: 'Mixed Grill', image: '/lovable-uploads/8298cb13-fa4a-43f4-bfc2-ee0ac6907125.png', category: 'Traditional Meals' },
+  { id: '2', name: 'Roast Chicken', image: '/lovable-uploads/e0b7f5e9-32be-430f-8ff3-a06b71129f47.png', category: 'Traditional Meals' },
+  { id: '3', name: 'Beef or Chicken Fajita', image: '/lovable-uploads/e370ea4a-cb84-4b3e-a428-02ebb6700983.png', category: 'Traditional Meals' },
+  { id: '4', name: 'Fish & Chips', image: '/lovable-uploads/7e88ceba-40a5-4d3a-92f7-fec6d7b3320e.png', category: 'Traditional Meals' },
+  { id: '5', name: 'Fish Cutlet', image: '/lovable-uploads/898ebc18-f7eb-42df-b1e9-c554484997d8.png', category: 'Traditional Meals' },
+  { id: '6', name: 'Tournedos of Beef', image: '/lovable-uploads/f73a3243-e64f-4df6-b0af-437572bbbc75.png', category: 'Traditional Meals' },
+  { id: '7', name: 'Grilled Fish', image: '/lovable-uploads/33afee02-333b-403d-8e16-2010d0d41649.png', category: 'Traditional Meals' },
+  { id: '8', name: 'Stuffed Chicken Breast', image: '/lovable-uploads/5790e55a-1875-4fcb-a69a-6632b61c1841.png', category: 'Traditional Meals' },
+  
   // Burgers
-  { id: '1', name: 'Signature Wagyu Burger', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop', category: 'Burgers' },
-  { id: '2', name: 'Truffle Mushroom Burger', image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop', category: 'Burgers' },
-  { id: '3', name: 'Gourmet Chicken Burger', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=400&h=300&fit=crop', category: 'Burgers' },
+  { id: '9', name: 'Signature Wagyu Burger', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop', category: 'Burgers' },
+  { id: '10', name: 'Truffle Mushroom Burger', image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop', category: 'Burgers' },
+  { id: '11', name: 'Gourmet Chicken Burger', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=400&h=300&fit=crop', category: 'Burgers' },
   
   // Pizzas
-  { id: '4', name: 'Artisan Margherita', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop', category: 'Pizzas' },
-  { id: '5', name: 'Truffle & Prosciutto', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop', category: 'Pizzas' },
-  { id: '6', name: 'Mediterranean Delight', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop', category: 'Pizzas' },
-  
-  // Traditional Meals
-  { id: '7', name: 'Pan-Seared Salmon', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop', category: 'Traditional Meals' },
-  { id: '8', name: 'Beef Wellington', image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop', category: 'Traditional Meals' },
-  { id: '9', name: 'Roasted Duck Confit', image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&h=300&fit=crop', category: 'Traditional Meals' },
+  { id: '12', name: 'Artisan Margherita', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop', category: 'Pizzas' },
+  { id: '13', name: 'Truffle & Prosciutto', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop', category: 'Pizzas' },
+  { id: '14', name: 'Mediterranean Delight', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop', category: 'Pizzas' },
 ];
 
 interface MenuCarouselProps {
