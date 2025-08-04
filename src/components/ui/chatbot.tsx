@@ -15,7 +15,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! Welcome to our restaurant. How can I help you today?',
+      text: 'Welcome to Mafi Restaurant. I am here to assist you with menu inquiries, reservation information, and general questions. How may I help you today?',
       isUser: false,
       timestamp: new Date()
     }
@@ -43,15 +43,19 @@ const Chatbot = () => {
       if (lowerInput.includes('who developed') || lowerInput.includes('developer')) {
         botResponse = 'The developers of this website are Abenezer Ketema (Frontend Developer) and Robel Assefa (Backend Developer).';
       } else if (lowerInput.includes('menu') || lowerInput.includes('food') || lowerInput.includes('dish')) {
-        botResponse = 'We serve signature burgers, artisan pizzas, and traditional meals. You can view our full menu section above!';
+        botResponse = 'We specialize in traditional meals featuring the finest ingredients and authentic flavors. Our signature dishes include Mixed Grill, Roast Chicken, Fish & Chips, and more. Please explore our menu section for the complete selection.';
       } else if (lowerInput.includes('location') || lowerInput.includes('where') || lowerInput.includes('address')) {
-        botResponse = 'You can find our location by clicking the "View on Map" button in the location section above!';
+        botResponse = 'You can find our exact location by clicking the "View on Map" button in our footer section, which will open our location in Google Maps.';
       } else if (lowerInput.includes('contact') || lowerInput.includes('phone') || lowerInput.includes('email')) {
-        botResponse = 'You can find our contact information in the contact section at the bottom of the page.';
+        botResponse = 'For inquiries, please contact us at +1 (555) 123-4567 or email us at info@mafirestaurant.com. Our team is ready to assist you.';
       } else if (lowerInput.includes('hours') || lowerInput.includes('open') || lowerInput.includes('time')) {
-        botResponse = 'For our current hours of operation, please contact us directly or visit our location section.';
+        botResponse = 'For our current operating hours and availability, please contact us directly at +1 (555) 123-4567. We would be happy to assist you.';
+      } else if (lowerInput.includes('meeting') || lowerInput.includes('hall') || lowerInput.includes('event') || lowerInput.includes('conference')) {
+        botResponse = 'Our meeting hall accommodates up to 50 people and features state-of-the-art facilities for corporate events and conferences. Please use our booking form in the Meeting Hall section to make a reservation.';
+      } else if (lowerInput.includes('reservation') || lowerInput.includes('book') || lowerInput.includes('table')) {
+        botResponse = 'For dining reservations, please contact us directly at +1 (555) 123-4567. For meeting hall bookings, please use the booking form in our Meeting Hall section.';
       } else {
-        botResponse = 'Thank you for your question! For specific inquiries about our menu or reservations, please check our menu section or contact us directly.';
+        botResponse = 'Thank you for your inquiry. For detailed information about our services, menu, or reservations, please contact us at +1 (555) 123-4567 or refer to the relevant sections on our website.';
       }
 
       const botMessage: Message = {
@@ -72,15 +76,15 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-8 right-8 z-50 animate-fade-in">
       {/* Chat Window */}
-      <div className={`transition-all duration-300 ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'}`}>
-        <Card className="w-80 h-96 mb-4 elegant-card overflow-hidden">
+      <div className={`transition-all duration-500 ease-out ${isOpen ? 'opacity-100 visible translate-y-0 scale-100' : 'opacity-0 invisible translate-y-8 scale-95'}`}>
+        <Card className="w-80 h-96 mb-4 elegant-card overflow-hidden shadow-2xl border-primary/20">
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="p-4 border-b border-border/20 bg-primary/10">
               <div className="flex items-center justify-between">
-                <h3 className="font-elegant font-semibold text-foreground">Restaurant Assistant</h3>
+                <h3 className="font-elegant font-semibold text-foreground">Mafi Restaurant Assistant</h3>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -120,7 +124,7 @@ const Chatbot = () => {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Type your message..."
+                  placeholder="Type your message here..."
                   className="flex-1 px-3 py-2 bg-input border border-border/20 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                 />
                 <Button

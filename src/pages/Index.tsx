@@ -105,31 +105,9 @@ const Index = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="traditional" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-12 bg-secondary">
-              <TabsTrigger value="traditional" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                Traditional Meals
-              </TabsTrigger>
-              <TabsTrigger value="burgers" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                Burgers
-              </TabsTrigger>
-              <TabsTrigger value="pizzas" className="text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                Pizzas
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="traditional" className="mt-8">
-              <MenuCarousel category="Traditional Meals" />
-            </TabsContent>
-
-            <TabsContent value="burgers" className="mt-8">
-              <MenuCarousel category="Burgers" />
-            </TabsContent>
-
-            <TabsContent value="pizzas" className="mt-8">
-              <MenuCarousel category="Pizzas" />
-            </TabsContent>
-          </Tabs>
+          <div className="w-full max-w-6xl mx-auto">
+            <MenuCarousel category="Traditional Meals" />
+          </div>
         </div>
       </section>
 
